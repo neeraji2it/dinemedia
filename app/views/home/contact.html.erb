@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+      <title>Contact</title>
+    </meta>
+    <meta content="<%= request.fullpath %>" name="application-url"></meta>
+    <%= stylesheet_link_tag "all", "jquery.notifyBar", :media => "all" %>
+    <%= javascript_include_tag "application", "fancybox/jquery-1.4.2.min.js","fancybox/jquery.mousewheel-3.0.2.pack.js", "fancybox/jquery.fancybox-1.3.1.js", "jquery.jcarousel.pack.js", "jquery.uscrollbar.js", "jquery.notifyBar.js" %>
+    <%['notice', 'error', 'warning'].each do |f|%>
+      <%if flash[f.to_sym]%>
+        <script type="text/javascript" >
+          jQuery(function () {
+            jQuery.notifyBar({
+              cls: "<%= f %>",
+              html: "<%=  flash[f.to_sym] %>",
+              delay: 10000,
+              animationSpeed: "normal"
+            });
+          });
+        </script>
+      <%end%>
+    <% end %>
+  </head>
+  <body class="home">
+    <!-- wrapper -->
+    <div id="wrapper">
+      <div class="w1">
+        <div id="contact_body">
+          <!-- header -->
+          <header id="header">
+            <div class="contact_header-holder">
+              <!-- bar -->
+              <div class="bar">
+                <!-- logo -->
+                <h1 class="logo vcard"><a href="home.html" class="fn org url"></a></h1>
+                <!-- social networks -->
+                <ul class="social-networks">
+                  <li><%=  link_to image_tag("/assets/homeblack.png"), '/', :class=>"home1" %></li>
+                  <li><%=   link_to image_tag("/assets/portfolioblack.png"), '/portfolio', :class=>"portfolio"  %></li>
+                  <li><%=  link_to image_tag("/assets/contactorange.png"), '/contact'  %></li>
+                </ul>
+              </div>
+            </div>
+          </header>
+          <div id="gray">
+            <div class="main-holder">
+              <div id="left-col">
+                <img src="/assets/contact/get in touch txt.png"/>
+              </div>
+              <div id="right-col">
+                <img src="/assets/contact/quote button.png"/>
+              </div>
+            </div>
+          </div>
+          <div class="main-holder" style="padding: 17px 0 0;">
+            <div id="contact_sub_body">
+              <!-- sub navigation -->
+              <article class="contact_content-section">
+                <table align="left" cellspacing="0" cellpadding="0" border="0">
+                  <tr>
+                    <td class="header" align="left" valign="top" height="25">Leave Us A Message</td>
+                  </tr>
+                  <tr>
+                    <td align="left" valign="top"> <div id="cont_text">Fell free to contact me or please fill up below in the following details and i will be in touch shortly.</div></td>
+                  </tr>
+                  <tr>
+                    <td align="left" valign="top" class="copy">
+                      <p>
+                        <style type="text/css">
+                          .copy {
+                            color:  #050008;
+                            font-family: Helvetica;
+                            font-size: 16px;
+                            font-weight: normal;
+                            line-height: 24px;
+                            letter-spacing: 1px;
+                          }
+                          .copy_big1 {
+                            color:  #050008;
+                            font-family: Helvetica;
+                            font-size: 18px;
+                            font-weight: bold;
+                            line-height: 20px;
+                            letter-spacing: 1px;
+                          }
+                          .error_conatiner {
+                            color: #E76767;
+                            float: left;
+                            height: auto;
+                            width: 100%;
+                          }
+                          .error {
+                            font-family: Helvetica;
+                            font-size: 12px;
+                            font-weight: normal;
+                            color: #000000;
+                            line-height: normal;
+                          }
+                          .securityInp
+                          {
+                            width:10px;
+                            height:auto;
+                            border:0px;
+                            outline:0px;
+                          }
+                          .securityInansp
+                          {
+                            width:20px;
+                            height:auto;
+                            border:0px;
+                            outline:0px;
+                          }
+
+                        </style>
+                        <div id='crmWebToEntityForm' align=left>
+                          <%= form_for(@contact, :url=>contact_path, :method => 'post', :html => { :multipart => true }) do |f| %>
+                            <table border=0 cellspacing=0 cellpadding=3 width=550>
+                              <tr>
+                                <td nowrap style='font-family:sans-serif;font-size:14px;' align='left' width='25%'>Your Name <span style="color:red;font-size:16px;">*</span> &nbsp;&nbsp;:</td>
+                              </tr>
+                              <tr>
+                                <td width='45%'>
+                                  <%= f.text_field :name %>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><%= validation_error(@contact.errors["name"])%></td>
+                              </tr>
+                              <tr>
+                                <td nowrap style='font-family:sans-serif;font-size:14px;' align='left' width='25%'>Your Email <span style="color:red;font-size:16px;">*</span> &nbsp;&nbsp;:</td>
+                              </tr>
+                              <tr>
+                                <td width='45%'>
+                                  <%= f.text_field :email %>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><%= validation_error(@contact.errors["email"])%></td>
+                              </tr>
+                              <tr>
+                                <td nowrap style='font-family:sans-serif;font-size:14px;' align='left' width='25%'>Subject &nbsp;&nbsp;:</td>
+                              </tr>
+                              <tr>
+                                <td width='45%'>
+                                  <%= f.text_field :subject %>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td nowrap style='font-family:sans-serif;font-size:14px;' align='left' width='25%'>Your Message &nbsp;&nbsp;:</td>
+                              </tr>
+                              <tr>
+                                <td width='45%'>
+                                  <%= f.text_area :body, :maxlength=>'1000', :width=>'250', :height=>'250' %>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td nowrap style='font-family:sans-serif;font-size:14px;' align='left' width='25%'>Upload a file &nbsp;&nbsp;:</td>
+                              </tr>
+                              <tr>
+                                <td width='45%'>
+                                  <%= f.file_field :attach %><span style="color:red; font-size: 12px;">(*must be in '.pdf' format)</span>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><%= validation_error(@contact.errors["attach"])%></td>
+                              </tr>
+                              <tr>
+                                <td colspan=2 align=left>
+                                  <input style="margin-left: 161px;" type='submit' name='save' value="Send" />
+                                  &nbsp; &nbsp;
+                                  <input type='reset' name='reset' value=Reset />
+                                </td>
+                              </tr>
+                            </table>
+                          <% end %>
+                        </div>
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+                <table align="center" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td align="left" valign="top" colspan="2" class="copy">
+                      <span class="copy_big1">Bangalore, India #1 <br/>(Delivery Center):</span>
+                      <br/>
+                      <div style="padding-top: 3px;">
+                        #27, Ambalipura,<br/>
+                        Sarjapur Road,<br/>
+                        Bangalore 560103<br/>
+                        India.<br/>
+                        Phone: 91-80-41317700/01/02
+                        <br/><br/>
+                      </div>
+
+                      <span class="copy_big1">Arizona, USA <br/>(Sales Office):</span>
+                      <br/>
+                      <div style="padding-top: 3px;">
+                        Edward Valentini<br/>
+                        355 8th street suite b
+                        <br/>
+                        san francisco ca 94107
+                        <br/>
+                        Phone: 4159520999<br/><br/>
+                      </div>
+                      <span class="copy_big1">Bangalore, India #2 <br/>(Regd Office/Legal):</span>
+                      <br/>
+                      <div style="padding-top: 3px;">
+                        No.118, B-Wing,<br/>
+                        Carlton Towers,<br/>
+                        #1, Airport Road,<br/>
+                        Bangalore 560008<br/>
+                        India.<br/>
+                        Phone: 91-80-4161106<br/><br/>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- footer -->
+      <footer id="footer">
+        <div class="footer-holder">
+          <div class="footer-frame">
+            <div class="col-1">
+              <p>@ Copyright Dine-Media All Rights Reserved.</p>
+            </div>
+            <div class="col-2">
+              <ul class="footer-links">
+                <li><a href="/home"> Home </a></li>
+                <li>|</li>
+                <li><a href="/portfolio"> Portfolio </a></li>
+                <li>|</li>
+                <li><a href="#"> Services </a></li>
+                <li>|</li>
+                <li><a href="/contact"> Contact Us </a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

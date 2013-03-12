@@ -1,0 +1,201 @@
+/* 
+	Resets defualt browser settings
+	reset.css
+*/
+
+
+/*#slides {
+	position:absolute;
+	top:15px;
+	left:4px;
+	z-index:100;
+}*/
+
+/*
+	Slides container
+	Important:
+	Set the width of your slides container
+	Set to display none, prevents content flash
+*/
+
+#slides .slides_container {
+    width:380px;
+    overflow:hidden;
+    position:relative;
+    display:none;
+    left: 109px;
+    top: 102px;
+}
+
+#slides_two .slides_container {
+    width:401px;
+    overflow:hidden;
+    position:relative;
+    display:none;
+    left: 18px;
+    top: 16px;
+}
+/*
+	Each slide
+	Important:
+	Set the width of your slides
+	If height not specified height will be set by the slide content
+	Set to display block
+*/
+
+#slides .slides_container a {
+    width:380px;
+    height:270px;
+    display:block;
+}
+#slides_two .slides_container a {
+    width:401px;
+    height:272px;
+    display:block;
+}
+
+
+#slides .slides_container a img,#slides_two .slides_container a img {
+    display:block;
+}
+
+/*
+	Next/prev buttons
+*/
+
+#slides a.next{
+    background: url("/assets/new home/tv/left arrow.png") no-repeat;
+    left:71px;
+}
+#slides a.prev{
+    background: url("/assets/new home/tv/right arrow.png") no-repeat;
+}
+
+#slides .next,#slides .prev {
+    position:absolute;
+    display:block;
+    z-index:101;
+    left: 89px;
+    width: 15px;
+    height: 19px;
+}
+
+#slides a.next:hover{
+    background: url("/assets/new home/tv/left arrow(mouse over).png") no-repeat;
+}
+
+#slides a.prev:hover{
+    background: url("/assets/new home/tv/right arrow(mouse over).png") no-repeat;
+}
+
+#slides a#view-all{
+    background: url("/assets/new home/tv/view all button.png") no-repeat;
+    float: right;
+    left: -110px;
+    position: relative;
+    top: -6px;
+    width: 101px;
+    height: 31px;
+}
+#slides a#view-all:hover{
+    background: url("/assets/new home/tv/blue hover(mouse over).png") no-repeat;
+    float: right;
+    left: -110px;
+    position: relative;
+    top: -6px;
+    width: 101px;
+    height: 31px;
+}
+
+
+
+/*
+	Pagination
+*/
+
+.pagination {
+    margin:26px auto 0;
+    width:100px;
+}
+
+.pagination li {
+    float:left;
+    margin:0 1px;
+    list-style:none;
+}
+
+.pagination li a {
+    display:block;
+    width:12px;
+    height:0;
+    padding-top:12px;
+    background-image:url(../img/pagination.png);
+    background-position:0 0;
+    float:left;
+    overflow:hidden;
+}
+
+.pagination li.current a {
+    background-position:0 -12px;
+}
+
+#slides_two .pagination {
+    margin:20px auto 0;
+    width:100px;
+}
+
+#slides_two .pagination li {
+    float:left;
+    margin:0 3px;
+    list-style:none;
+}
+
+
+#slides_two .pagination li a {
+    background: url("/assets/new home/banner/dot.png");
+    display:block;
+    width:12px;
+    height:0;
+    padding-top:12px;
+    background-position:0 0;
+    float:left;
+    overflow:hidden;
+}
+
+
+#slides_two .pagination li.current a {
+    background: url("/assets/new home/banner/dot hover.png") no-repeat;
+     background-position:-2px -1px;
+}
+
+
+/*
+	Footer
+*/
+
+/*#footer {
+	text-align:center;
+	width:580px;
+	margin-top:9px;
+	padding:4.5px 0 18px;
+	border-top:1px solid #dfdfdf;
+}*/
+
+/*#footer p {
+	margin:4.5px 0;
+	font-size:1.0em;
+}*/
+
+/*
+	Anchors
+*/
+
+/*a:link,a:visited {
+	color:#599100;
+	text-decoration:none;
+}
+
+a:hover,a:active {
+	color:#599100;
+	text-decoration:underline;
+}*/
